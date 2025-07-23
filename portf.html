@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhivardhan Reddy Eega - Portfolio</title>
+    <meta name="description" content="Final Year B.Tech CSE Student at GITAM University - AI enthusiast, Web Developer & Video Editor">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Dark futuristic theme */
+            --background: hsl(222, 20%, 8%);
+            --foreground: hsl(210, 100%, 95%);
+            --card: hsl(222, 20%, 10%);
+            --card-foreground: hsl(210, 100%, 95%);
+            
+            /* Cyber blue primary */
+            --primary: hsl(200, 100%, 50%);
+            --primary-foreground: hsl(222, 20%, 8%);
+            --primary-glow: hsl(200, 100%, 70%);
+            
+            /* Silver/metallic secondary */
+            --secondary: hsl(220, 15%, 25%);
+            --secondary-foreground: hsl(210, 100%, 95%);
+            
+            --muted: hsl(220, 15%, 20%);
+            --muted-foreground: hsl(210, 20%, 65%);
+            
+            /* Neon accent */
+            --accent: hsl(280, 100%, 70%);
+            --accent-foreground: hsl(222, 20%, 8%);
+            
+            --border: hsl(220, 15%, 25%);
+            --input: hsl(220, 15%, 25%);
+            
+            /* Custom futuristic tokens */
+            --neon-cyan: hsl(180, 100%, 50%);
+            --neon-purple: hsl(280, 100%, 70%);
+            --metal-dark: hsl(220, 15%, 15%);
+            
+            /* Gradients */
+            --gradient-cyber: linear-gradient(135deg, hsl(200, 100%, 50%), hsl(280, 100%, 70%));
+            --gradient-metal: linear-gradient(135deg, hsl(220, 15%, 25%), hsl(220, 15%, 35%));
+            
+            /* Shadows and glows */
+            --glow-blue: 0 0 30px hsla(200, 100%, 50%, 0.4);
+            --shadow-cyber: 0 10px 30px hsla(200, 100%, 50%, 0.2);
+        }
+
+        body {
+            background: var(--background);
+            color: var(--foreground);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-cyber);
+            color: var(--primary-foreground);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow-blue);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 10px hsla(200, 100%, 50%, 0.3);
+        }
+
+        .btn-outline:hover {
+            background: hsla(200, 100%, 50%, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .card {
+            background: hsla(222, 20%, 10%, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid hsla(220, 15%, 25%, 0.2);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.02) translateY(-5px);
+            box-shadow: var(--shadow-cyber);
+        }
+
+        .cyber-border {
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 10px hsla(200, 100%, 50%, 0.3);
+        }
+
+        .gradient-text {
+            background: var(--gradient-cyber);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            background: var(--secondary);
+            color: var(--secondary-foreground);
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .badge-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--muted-foreground);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .gear {
+            position: absolute;
+            opacity: 0.1;
+            animation: spin 20s linear infinite;
+        }
+
+        .gear:nth-child(odd) {
+            animation-direction: reverse;
+            animation-duration: 15s;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+
+        .nav.scrolled {
+            background: hsla(222, 20%, 10%, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid hsla(220, 15%, 25%, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: var(--gradient-cyber);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted-foreground);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            filter: drop-shadow(var(--glow-blue));
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--foreground);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--muted-foreground);
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: var(--gradient-cyber);
+            padding: 3px;
+            position: relative;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        /* Tech Stack */
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--card);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 0 20px hsla(200, 100%, 50%, 0.3);
+        }
+
+        .tech-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-cyber);
+            border-radius: 0.5rem;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--foreground);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--input);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--foreground);
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px hsla(200, 100%, 50%, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 1rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Background Elements */
+        .background-gears {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .experience-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-cyber);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .experience-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-meta {
+            color: var(--muted-foreground);
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .experience-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-image {
+                width: 250px;
+                height: 250px;
+            }
+        }
+
+        /* Certificates */
+        .cert-upload {
+            border: 2px dashed var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cert-upload:hover {
+            border-color: var(--primary);
+            background: hsla(200, 100%, 50%, 0.05);
+        }
+
+        .cert-item {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+
+        .cert-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .cert-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Gears -->
+    <div class="background-gears">
+        <div class="gear" style="top: 10%; left: 5%; width: 60px; height: 60px; background: hsla(200, 100%, 50%, 0.1); border-radius: 50%;"></div>
+        <div class="gear" style="top: 60%; right: 10%; width: 80px; height: 80px; background: hsla(280, 100%, 70%, 0.1); border-radius: 50%;"></div>
+        <div class="gear" style="bottom: 20%; left: 15%; width: 100px; height: 100px; background: hsla(180, 100%, 50%, 0.1); border-radius: 50%;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="container">
+            <div class="nav-container">
+                <div class="nav-logo">AR</div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#tech-stack">Tech Stack</a></li>
+                    <li><a href="#certificates">Certificates</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <a href="#" class="btn btn-outline">📄 Resume</a>
+                <button class="mobile-menu" onclick="toggleMobileMenu()">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content fade-in-up">
+                <div class="hero-text">
+                    <div class="badge" style="margin-bottom: 1rem;">✨ Final Year Student</div>
+                    <h1>
+                        Hello, I'm<br>
+                        <span class="gradient-text">Abhivardhan Reddy Eega</span>
+                    </h1>
+                    <p>Final Year B.Tech CSE Student at GITAM University, passionate about AI, web development, and creating innovative solutions.</p>
+                    
+                    <div class="social-links">
+                        <a href="www.linkedin.com/in/abhivardhan-reddy-e-0942a92a5" class="btn btn-outline">LinkedIn</a>
+                        <a href="https://github.com/abhiii-22" class="btn btn-outline">GitHub</a>
+                        <a href="https://www.instagram.com/abhii_reddy22/" class="btn btn-outline"> Instagram</a>
+                        <a href="https://x.com/AbhiReddy_7" class="btn btn-outline">Twitter (X)</a>
+                       
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="https://drive.google.com/file/d/1Z20ci1_ZzNMdOm3pxf8Ws1eUQB_yxrjr/view?usp=drivesdk" class="btn btn-primary">Resume</a>
+                        <a href="https://drive.google.com/drive/folders/1657844SL3P5pxiUyyNcczHjmGMGfXqm2" class="btn btn-outline">View Portfolio (Editor)</a>
+                    </div>
+                </div>
+                
+                <div class="profile-image floating">
+                    <img src="img/profile.jpg" alt="Abhivardhan Reddy Eega">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" style="background: hsla(220, 15%, 15%, 0.2);">
+        <div class="container">
+            <div class="fade-in-up">
+                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">
+                    <span class="gradient-text">About Me</span>
+                </h2>
+                <p style="text-align: center; color: var(--muted-foreground); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Passionate about technology and innovation, I'm on a journey to become a skilled software engineer with expertise in AI and web development.
+                </p>
+                
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h3 style="margin-bottom: 1rem; color: var(--primary);">🚀 My Journey</h3>
+                        <p style="color: var(--muted-foreground);">
+                            Currently pursuing my B.Tech in Computer Science at GITAM University with a strong CGPA of 8.08. 
+                            I've gained practical experience through internships in AI and video editing, working with top organizations 
+                            to develop my technical and creative skills.
+                        </p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 style="margin-bottom: 1rem; color: var(--primary);">🎓 Education</h3>
+                        <div style="space-y: 1rem;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+                                    <span style="color: var(--accent);">🎓</span>
+                                    <strong>GITAM University</strong>
+                                    <span class="badge">8.08 CGPA</span>
+                                </div>
+                                <p style="color: var(--muted-foreground); font-size: 0.875rem;">B.Tech CSE (2022-2026)</p>
+                            </div>
+                            
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+                                    <span style="color: var(--accent);">🎓</span>
+                                    <strong>Resonance Junior College</strong>
+                                    <span class="badge">92.2%</span>
+                                </div>
+                                <p style="color: var(--muted-foreground); font-size: 0.875rem;">Intermediate (2020-2022)</p>
+                            </div>
+                            
+                            <div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+                                    <span style="color: var(--accent);">🎓</span>
+                                    <strong>DAV BDL Public School</strong>
+                                    <span class="badge">70%</span>
+                                </div>
+                                <p style="color: var(--muted-foreground); font-size: 0.875rem;">High School</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="fade-in-up">
+                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">
+                    <span class="gradient-text">Experience</span>
+                </h2>
+                <p style="text-align: center; color: var(--muted-foreground); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    My professional journey through internships and freelance work, gaining valuable experience in AI and content creation.
+                </p>
+                
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="card" style="margin-bottom: 2rem;">
+                        <div class="experience-item">
+                            <div class="experience-icon"><img src="img/st.jpeg" alt="st" style="width: 45px;height: 45px; border-radius: 8px;"></div>
+                            <div class="experience-content">
+                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                                    <h3>AI Video Annotation Intern</h3>
+                                    <span class="badge cyber-border">Internship</span>
+                                </div>
+                                <div class="experience-meta">
+                                    Student Tribe • 📅 June 25 - July 25
+                                </div>
+                                <p style="color: var(--muted-foreground); margin-bottom: 1rem;">
+                                    Contributed to AI model training by labeling and annotating visuals (images and videos) to enhance computer vision for object detection and classification.
+                                </p>
+                                <div class="experience-skills">
+                                    <span class="badge badge-outline">Computer Vision</span>
+                                    <span class="badge badge-outline">AI/ML</span>
+                                    <span class="badge badge-outline">Data Annotation</span>
+                                    <span class="badge badge-outline">Object Detection</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="experience-item">
+                            <div class="experience-icon"><img src="img/hh.png" alt="hh" style="width: 60px;height: 40px"></div>
+                            <div class="experience-content">
+                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                                    <h3>Video Editor</h3>
+                                    <span class="badge cyber-border">Freelance</span>
+                                </div>
+                                <div class="experience-meta">
+                                    Hyderabad Hydras • 📅 Jan 25 - April 25
+                                </div>
+                                <p style="color: var(--muted-foreground); margin-bottom: 1rem;">
+                                    Edited professional esports content for social media and campaigns for India's top esports organization.
+                                </p>
+                                <div class="experience-skills">
+                                    <span class="badge badge-outline">Video Editing</span>
+                                    <span class="badge badge-outline">Content Creation</span>
+                                    <span class="badge badge-outline">Social Media</span>
+                                    <span class="badge badge-outline">Esports</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" style="background: hsla(220, 15%, 15%, 0.2);">
+        <div class="container">
+            <div class="fade-in-up">
+                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">
+                    <span class="gradient-text">Projects</span>
+                </h2>
+                <p style="text-align: center; color: var(--muted-foreground); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Innovative solutions and applications I've built to solve real-world problems.
+                </p>
+                
+                <div class="grid grid-3">
+                    <div class="card">
+                        <div class="tech-icon" style="margin-bottom: 1rem;"><img src="img/sm.jpeg" alt="img" style="width:50px; height:50px;border-radius: 6px"/></div>
+                        <h3 style="margin-bottom: 1rem;">Emails Automation Agent using N8n</h3>
+                        <p style="color: var(--muted-foreground); margin-bottom: 1.5rem;">
+                            Automated email sender using N8n, triggered by form submissions and calendar events.
+                        </p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                            <span class="badge badge-outline">N8n</span>
+                            <span class="badge badge-outline">Automation</span>
+                            <span class="badge badge-outline">Email</span>
+                        </div>
+                        <div style="display: flex; gap: 1rem;">
+                            <a href="https://github.com/abhiii-22/n8n-ai-chatbot/blob/main/My_workflow_3.json" class="btn btn-outline">💻 Code</a>
+                            <a href="https://github.com/abhiii-22/n8n-ai-chatbot/blob/main/VID-20250622-WA0012.mp4" class="btn btn-primary">🚀 Demo</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="tech-icon" style="margin-bottom: 1rem;"><img src="img/sps.jpeg" alt="img" style="width:50px; height:50px;border-radius:6px"/></div>
+                        <h3 style="margin-bottom: 1rem;">Smart Parking Management System</h3>
+                        <p style="color: var(--muted-foreground); margin-bottom: 1.5rem;">
+                            Web app using JSP, JDBC, and MySQL for real-time parking slot booking with session handling and dashboards.
+                        </p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                            <span class="badge badge-outline">JSP</span>
+                            <span class="badge badge-outline">JDBC</span>
+                            <span class="badge badge-outline">MySQL</span>
+                        </div>
+                        <div style="display: flex; gap: 1rem;">
+                            <a href="#" class="btn btn-outline">💻 Code</a>
+                            <a href="#" class="btn btn-primary">🚀 Demo</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="tech-icon" style="margin-bottom: 1rem;">✋</div>
+                        <h3 style="margin-bottom: 1rem;">AI-based Gesture Drawing App</h3>
+                        <p style="color: var(--muted-foreground); margin-bottom: 1.5rem;">
+                            Real-time finger gesture-based drawing app using OpenCV and MediaPipe.
+                        </p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                            <span class="badge badge-outline">OpenCV</span>
+                            <span class="badge badge-outline">MediaPipe</span>
+                            <span class="badge badge-outline">Python</span>
+                        </div>
+                        <div style="display: flex; gap: 1rem;">
+                            <a href="#" class="btn btn-outline">💻 Code</a>
+                            <a href="#" class="btn btn-primary">🚀 Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="tech-stack">
+        <div class="container">
+            <div class="fade-in-up">
+                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">
+                    <span class="gradient-text">Tech Stack</span>
+                </h2>
+                <p style="text-align: center; color: var(--muted-foreground); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Technologies and tools I use to bring ideas to life.
+                </p>
+                
+                <div class="grid grid-4">
+                    <div class="tech-item">
+                        <div class="tech-icon"><img src="img/java.png" alt="Java" style="width:40px; height:40px"/></div>
+                        <span>JAVA</span>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon"><img src="img/C.png" alt="C" style="width:40px; height:40px"/></div>
+                        <span>C</span>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon"><img src="img/Python.png" alt="python" style="width:40px; height:40px"/></div>
+                        <span>PYTHON</span>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon"><img src="img/SQL Developer.png" alt="sql" style="width:40px; height:40px"/></div>
+                        <span>SQL</span>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon"><img src="img/HTML5.png" alt="html" style="width:40px; height:40px"/></div>
+                        <span>HTML</span>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon"><img src="img/CSS3.png" alt="css3" style="width:40px; height:40px"/></div>
+                        <span>CSS</span>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon"><img src="img/JavaScript.png" alt="js" style="width:40px; height:40px;border-radius: 6px;"/></div>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon"><img src="img/Firebase.png" alt="Firebase" style="width:45px; height:45px"/></div>
+                        <span>Firebase</span>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon"><img src="img/Git.png" alt="Git" style="width:37px; height:37px"/></div>
+                        <span>Git</span>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon"><img src="img/GitHub.png" alt="Github" style="width:40px; height:40px"/></div>
+                        <span>GitHub</span>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon"><img src="img/MongoDB.png" alt="MongoDB" style="width:47px; height:47px"/></div>
+                        <span>MongoDB</span>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon"><img src="img/Vercel.png" alt="Vercel" style="width:30px; height:30px"/></div>
+                        <span>Vercel</span>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon"><img src="img/MySQL.png" alt="MySQL" style="width:40px; height:40px"/></div>
+                        <span>MySQL</span>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon"><img src="img/Docker.png" alt="Docker" style="width:45px; height:45px"/></div>
+                        <span>Docker</span>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon"><img src="img/Railway.png" alt="Railway" style="width:40px; height:40px; border-radius: 5px"/></div>
+                        <span>Railway</span>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon"><img src="img/Render.png" alt="Render" style="width:35px; height:35px;border-radius:5px"/></div>
+                        <span>Render</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" style="background: hsla(220, 15%, 15%, 0.2);">
+        <div class="container">
+            <div class="fade-in-up">
+                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">
+                    <span class="gradient-text">Certificates</span>
+                </h2>
+                <p style="text-align: center; color: var(--muted-foreground); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Professional certifications and achievements.
+                </p>
+                
+                <div class="grid grid-3" id="certificates-grid">
+                    <div class="card cert-upload" onclick="document.getElementById('cert-upload').click()">
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">📋</div>
+                            <h3 style="margin-bottom: 0.5rem;">Upload Certificate</h3>
+                            <p style="color: var(--muted-foreground);">Click to add a new certificate</p>
+                        </div>
+                        <input type="file" id="cert-upload" accept="image/*" style="display: none;" onchange="handleCertificateUpload(event)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="fade-in-up">
+                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">
+                    <span class="gradient-text">Contact</span>
+                </h2>
+                <p style="text-align: center; color: var(--muted-foreground); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Let's connect and build something amazing together.
+                </p>
+                
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h3 style="margin-bottom: 2rem; color: var(--primary);">📞 Contact Information</h3>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="color: var(--accent);">📧</span>
+                                <div>
+                                    <strong>Email</strong>
+                                    <p style="color: var(--muted-foreground); margin: 0;">
+                                        <a href="mailto:abhivardhanreddy07@gmail.com" style="color: var(--primary); text-decoration: none;">
+                                            abhivardhanreddy07@gmail.com
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="color: var(--accent);">📍</span>
+                                <div>
+                                    <strong>Location</strong>
+                                    <p style="color: var(--muted-foreground); margin: 0;">Hyderabad, India</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="color: var(--accent);">⏰</span>
+                                <div>
+                                    <strong>Availability</strong>
+                                    <p style="color: var(--muted-foreground); margin: 0;">Open for opportunities</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 style="margin-bottom: 2rem; color: var(--primary);">💬 Send Message</h3>
+                        
+                        <form id="contact-form" onsubmit="handleContactSubmit(event)">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" class="form-control" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                📤 Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--card); padding: 2rem 0; border-top: 1px solid var(--border);">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <p style="color: var(--muted-foreground); margin: 0;">
+                    © 2024 Abhivardhan Reddy Eega. All rights reserved.
+                </p>
+                
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#" class="btn btn-outline" style="padding: 0.5rem;">🔗</a>
+                    <a href="#" class="btn btn-outline" style="padding: 0.5rem;">📷</a>
+                    <a href="#" class="btn btn-outline" style="padding: 0.5rem;">🎬</a>
+                    <a href="#" class="btn btn-outline" style="padding: 0.5rem;">💻</a>
+                </div>
+                
+                <button onclick="scrollToTop()" class="btn btn-primary" style="padding: 0.5rem 1rem;">
+                    ⬆️ Back to Top
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Certificate View -->
+    <div id="cert-modal" class="modal" onclick="closeCertModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeCertModal()">×</button>
+            <img id="modal-cert-image" style="width: 100%; height: auto; display: block;">
+        </div>
+    </div>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            // Simple mobile menu implementation
+            alert('Mobile menu would toggle here');
+        }
+
+        // Contact form submission
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Show success message
+            alert('Thank you for your message! I\'ll get back to you soon.');
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        // Certificate upload handling
+        function handleCertificateUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    addCertificateToGrid(e.target.result, file.name);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function addCertificateToGrid(imageSrc, fileName) {
+            const grid = document.getElementById('certificates-grid');
+            const certItem = document.createElement('div');
+            certItem.className = 'card cert-item';
+            certItem.innerHTML = `
+                <img src="${imageSrc}" alt="${fileName}" onclick="openCertModal('${imageSrc}')">
+                <div style="padding: 1rem; text-align: center;">
+                    <h4 style="margin: 0; font-size: 0.875rem;">${fileName}</h4>
+                </div>
+            `;
+            
+            // Insert before the upload card
+            grid.insertBefore(certItem, grid.lastElementChild);
+        }
+
+        function openCertModal(imageSrc) {
+            const modal = document.getElementById('cert-modal');
+            const modalImage = document.getElementById('modal-cert-image');
+            modalImage.src = imageSrc;
+            modal.classList.add('show');
+        }
+
+        function closeCertModal() {
+            const modal = document.getElementById('cert-modal');
+            modal.classList.remove('show');
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in-up elements
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Close modal on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeCertModal();
+            }
+        });
+    </script>
+</body>
+</html>
